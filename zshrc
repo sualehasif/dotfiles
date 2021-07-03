@@ -13,14 +13,14 @@ fzf_log() {
 }
 
 # path to your oh-my-zsh installation.
-export zsh="/home/ubuntu/.oh-my-zsh"
+export ZSH="/home/ubuntu/.oh-my-zsh"
 
 # set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $random_theme
 # see https://github.com/robbyrussell/oh-my-zsh/wiki/themes
 
-zsh_theme="robbyrussell"
+ZSH_THEME="robbyrussell"
 # zsh_theme="powerlevel10k/powerlevel10k"
 
 
@@ -82,12 +82,12 @@ zsh_theme="robbyrussell"
 # custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # example format: plugins=(rails git textmate ruby lighthouse)
 # add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-z zsh-interactive-cd copyfile cp history mosh colorize themes colored-man-pages zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git zsh-z zsh-interactive-cd copyfile cp history mosh colorize themes colored-man-pages zsh-syntax-highlighting)
 
 # for zsh-z\
 zstyle ':completion:*' menu select
 
-source $zsh/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
 
 
 # User configuration
