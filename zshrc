@@ -1,41 +1,112 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
+# enable powerlevel10k instant prompt. should stay close to the top of ~/.zshrc.
+# initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block, everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+if [[ -r "${xdg_cache_home:-$home/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${xdg_cache_home:-$home/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# if you come from bash you might have to change your $path.
+export path=$home/bin:/usr/local/bin:$path
+export java_home=$(/usr/libexec/java_home)
+# apache ant
+export ant_home=/users/sualeh/apache-ant-1.10.7
+export path=~/opt/anaconda3/bin:$ant_home/bin:$path
+export path=$home/.poetry/bin:$path
+
+#setting up ssh add for my mit key
+ssh-add -k ~/.ssh/id_rsa
+ssh-add -k ~/.ssh/id_rsa_mit
 
 tm() {
-  [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
+  [[ -n "$tmux" ]] && change="switch-client" || change="attach-session"
   if [ $1 ]; then 
      tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
   fi
-  session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
+  session=$(tmux list-sessions -f "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "no sessions found."
 }
 
 fzf_log() {  
-  hash=$(git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |  fzf | awk '{print $1}')
+  hash=$(git log --color=always --format="%c(auto)%h%d %s %c(black)%c(bold)%cr" "$@" |  fzf | awk '{print $1}')
   echo $hash | pbcopy
   git showtool $hash
 }
-# Set name of the theme to load --- if set to "random", it will
+
+# path to your oh-my-zsh installation.
+export zsh="/users/sualeh/.oh-my-zsh"
+
+# set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# to know which specific one was loaded, run: echo $random_theme
+# see https://github.com/robbyrussell/oh-my-zsh/wiki/themes
 
-ZSH_THEME="agnoster"
-# ZSH_THEME="powerlevel10k/powerlevel10k"
+zsh_theme="agnoster"
+# zsh_theme="powerlevel10k/powerlevel10k"
 
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+
+# set list of themes to pick from when loading at random
+# setting this variable when zsh_theme=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# if set to an empty array, this variable will have no effect.
+# zsh_theme_random_candidates=( "robbyrussell" "agnoster" )
+
+# uncomment the following line to use case-sensitive completion.
+# case_sensitive="true"
+
+# uncomment the following line to use hyphen-insensitive completion.
+# case-sensitive completion must be off. _ and - will be interchangeable.
+# hyphen_insensitive="true"
+
+# uncomment the following line to disable bi-weekly auto-update checks.
+# disable_auto_update="true"
+
+# uncomment the following line to automatically update without prompting.
+# disable_update_prompt="true"
+
+# uncomment the following line to change how often to auto-update (in days).
+# export update_zsh_days=13
+
+# uncomment the following line if pasting urls and other text is messed up.
+# disable_magic_functions=true
+
+# uncomment the following line to disable colors in ls.
+# disable_ls_colors="true"
+
+# uncomment the following line to disable auto-setting terminal title.
+# disable_auto_title="true"
+
+# uncomment the following line to enable command auto-correction.
+# enable_correction="true"
+
+# uncomment the following line to display red dots whilst waiting for completion.
+# completion_waiting_dots="true"
+
+# uncomment the following line if you want to disable marking untracked files
+# under vcs as dirty. this makes repository status check for large repositories
+# much, much faster.
+# disable_untracked_files_dirty="true"
+
+# uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# you can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# hist_stamps="mm/dd/yyyy"
+
+# would you like to use another custom folder than $zsh/custom?
+# zsh_custom=/path/to/new-custom-folder
+
+# which plugins would you like to load?
+# standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# example format: plugins=(rails git textmate ruby lighthouse)
+# add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-z zsh-interactive-cd copyfile cp history mosh colorize themes colored-man-pages zsh-autosuggestions zsh-syntax-highlighting)
 
-# For zsh-z\
+# for zsh-z\
 zstyle ':completion:*' menu select
+
+source $zsh/oh-my-zsh.sh
 
 
 # User configuration
