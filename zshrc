@@ -19,17 +19,13 @@ fzf_log() {
   echo $hash | pbcopy
   git showtool $hash
 }
-
-# Path to your oh-my-zsh installation.
-export ZSH="~/.oh-my-zsh"
-
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
-# ZSH_THEME="agnoster"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="agnoster"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -41,7 +37,6 @@ plugins=(git zsh-z zsh-interactive-cd copyfile cp history mosh colorize themes c
 # For zsh-z\
 zstyle ':completion:*' menu select
 
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -67,7 +62,6 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
 alias c='clear'
 alias v='vim'
 alias condals="conda env list"
