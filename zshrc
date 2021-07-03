@@ -4,19 +4,6 @@
 if [[ -r "${xdg_cache_home:-$home/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${xdg_cache_home:-$home/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-# if you come from bash you might have to change your $path.
-export path=$home/bin:/usr/local/bin:$path
-export java_home=$(/usr/libexec/java_home)
-# apache ant
-export ant_home=/users/sualeh/apache-ant-1.10.7
-export path=~/opt/anaconda3/bin:$ant_home/bin:$path
-export path=$home/.poetry/bin:$path
-
-#setting up ssh add for my mit key
-ssh-add -k ~/.ssh/id_rsa
-ssh-add -k ~/.ssh/id_rsa_mit
-
 tm() {
   [[ -n "$tmux" ]] && change="switch-client" || change="attach-session"
   if [ $1 ]; then 
@@ -32,7 +19,7 @@ fzf_log() {
 }
 
 # path to your oh-my-zsh installation.
-export zsh="/users/sualeh/.oh-my-zsh"
+export zsh="~/.oh-my-zsh"
 
 # set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -132,16 +119,7 @@ source $zsh/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="vim ~/.zshrc"
 alias c='clear'
 alias v='vim'
 alias condals="conda env list"
 alias cls="conda info --envs"
-# alias vim='nvim'
-unalias gp
-
-source ~/.fzf.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
