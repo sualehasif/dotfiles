@@ -1,9 +1,3 @@
-# enable powerlevel10k instant prompt. should stay close to the top of ~/.zshrc.
-# initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block, everything else may go below.
-if [[ -r "${xdg_cache_home:-$home/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${xdg_cache_home:-$home/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 tm() {
   [[ -n "$tmux" ]] && change="switch-client" || change="attach-session"
   if [ $1 ]; then 
@@ -19,14 +13,14 @@ fzf_log() {
 }
 
 # path to your oh-my-zsh installation.
-export zsh="~/.oh-my-zsh"
+export zsh="/home/ubuntu/.oh-my-zsh"
 
 # set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $random_theme
 # see https://github.com/robbyrussell/oh-my-zsh/wiki/themes
 
-zsh_theme="agnoster"
+zsh_theme="robbyrussell"
 # zsh_theme="powerlevel10k/powerlevel10k"
 
 
