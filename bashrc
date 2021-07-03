@@ -9,3 +9,4 @@ alias v='nvim'
 alias condals="conda env list"
 alias cls="conda info --envs"
 
+zsh
