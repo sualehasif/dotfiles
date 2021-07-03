@@ -9,8 +9,8 @@
     ~/.tmux.conf.local: tmux.conf.local
     ~/.vim: vim
     ~/.vimrc: vimrc
-    ~/.bash_profile:
-    ~/.bashrc:
+    ~/.bash_profile: bash_profile
+    ~/.bashrc: bashrc
 
 
 - create:
